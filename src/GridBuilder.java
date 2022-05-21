@@ -1,9 +1,9 @@
-public class MazeBuilder {
+public class GridBuilder {
     private final int height;
     private final int width;
     private final Vertex[][] vertices;
 
-    public MazeBuilder(int height, int width) {
+    public GridBuilder(int height, int width) {
         this.height = height;
         this.width = width;
         vertices = new Vertex[height][width];

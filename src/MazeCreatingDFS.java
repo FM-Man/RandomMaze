@@ -1,14 +1,16 @@
-public class DFS extends Thread{
+import java.io.IOException;
+
+public class MazeCreatingDFS extends Thread{
     boolean x=false;
     Vertex root;
-    public DFS(Vertex root){
+    public MazeCreatingDFS(Vertex root){
         this.root = root;
     }
 
     private void util(Vertex source, Vertex to){
         to.visited = true;
         Arm nA= new Arm(to,source);
-        Main.arms.add(nA);
+        Maze.arms.add(nA);
         System.out.println(root.x+"->"+nA);
 
         try {
@@ -33,5 +35,10 @@ public class DFS extends Thread{
         for(int i=0;i<4;i++)
             line(root);
         x=true;
+        try {
+            Maze.getInstance().notifyWriter();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
