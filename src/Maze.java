@@ -1,17 +1,15 @@
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Maze {
     private boolean thread1done = false, thread2done=false;
-    int height =70;
-    int width = 50;
+    int height =100;
+    int width = 100;
 
 
     static ArrayList<Arm> arms = new ArrayList<>();
