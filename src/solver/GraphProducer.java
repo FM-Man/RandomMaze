@@ -14,7 +14,6 @@ public class GraphProducer {
         imagePath=s;
     }
 
-
     public Graph makeGraph() throws IOException {
 
         BufferedImage image = ImageIO.read(new File(imagePath));
@@ -35,7 +34,7 @@ public class GraphProducer {
                         if ((hasWidePipe(image, j + 10, i + 10) || hasLongPipe(image, j + 10, i + 10) ))
                             continue;
 
-//                    image.setRGB(j+10,i+10,Color.BLUE.getRGB());
+                    //image.setRGB(j+10,i+10,Color.BLUE.getRGB());
                     SolverVertex thisVertex = new SolverVertex(j, i);
                     g.vertices[i][j] = thisVertex;
                     pxType[i][j] = 2;
