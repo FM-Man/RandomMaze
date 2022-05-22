@@ -11,5 +11,7 @@ public class Graph {
         height = h;
         width=w;
         vertices = new SolverVertex[height][width];
+        starters = new ArrayList<>();
+        enders = new ArrayList<>();
     }
 }

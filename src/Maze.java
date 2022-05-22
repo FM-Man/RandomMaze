@@ -8,8 +8,8 @@ import java.util.Arrays;
 
 public class Maze {
     private boolean thread1done = false, thread2done=false;
-    int height =100;
-    int width = 100;
+    int height= 20;
+    int width = 20;
 
 
     static ArrayList<Arm> arms = new ArrayList<>();

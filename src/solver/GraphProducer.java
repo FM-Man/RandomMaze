@@ -27,38 +27,72 @@ public class GraphProducer {
             Arrays.fill(pxTypeRow,0);
         }
 
-        for(int i=0;i<height;i++){
+        for(int i=0; i<height; i++){
             for(int j=0; j<width; j++){
                 Color pixel = new Color(image.getRGB(j+10,i+10));
                 if(pixel.equals(Color.WHITE)){
-                    if (hasWidePipe(image, j + 10, i + 10) || hasLongPipe(image, j + 10, i + 10)) {
-                        continue;
+                    if((i!=0 && i!=height-1))
+                        if ((hasWidePipe(image, j + 10, i + 10) || hasLongPipe(image, j + 10, i + 10) ))
+                            continue;
+
+//                    image.setRGB(j+10,i+10,Color.BLUE.getRGB());
+                    SolverVertex thisVertex = new SolverVertex(j, i);
+                    g.vertices[i][j] = thisVertex;
+                    pxType[i][j] = 2;
+
+                    if(i==0){
+                        g.starters.add(thisVertex);
                     }
-                    image.setRGB(j+10,i+10,Color.RED.getRGB());
-//                    SolverVertex thisVertex = new SolverVertex(j, i);
-//                    g.vertices[i][j] = thisVertex;
-//                    pxType[i][j] = 2;
-//
-//                    if(i==0){
-//                        g.starters.add(thisVertex);
-//                    }
-//                    else {
-//                        int distance = 0;
-//                        for(int a=i;pxType[a][j]!=1;a--){
-//                            distance++;
-//                            if(g.vertices[a][j] != null){
-//                                thisVertex.connect(g.vertices[a][j],distance);
-//                                break;
-//                            }
-//                        }
-//                    }
-//                }
-//                else {
-//                    pxType[i][j] = 1;
+                    else {
+                        int distance = 0;
+                        for(int a=i-1;pxType[a][j]!=1;a--){
+                            distance++;
+                            if(g.vertices[a][j] != null){
+                                thisVertex.connect(g.vertices[a][j],distance);
+                                break;
+                            }
+                            if(a <= 0) break;
+                        }
+                    }
+
+                    if(j!=0){
+                        int distance = 0;
+                        for(int a=j-1;pxType[i][a]!=1;a--){
+                            distance++;
+                            if(g.vertices[i][a] != null){
+                                thisVertex.connect(g.vertices[i][a],distance);
+                                break;
+                            }
+                            if(a <= 0) break;
+                        }
+                    }
+
+                    if(i==height-1){
+                        g.enders.add(thisVertex);
+                    }
+                }
+                else {
+                    pxType[i][j] = 1;
                 }
 
             }
         }
+
+//        for (int i=0; i<height; i++){
+//            for (int j=0; j<width; j++){
+//                if(g.vertices[i][j] != null){
+//                    SolverVertex v = g.vertices[i][j];
+////                    image.setRGB(v.pixelPosition[0]+10,v.pixelPosition[1]+10,Color.RED.getRGB());
+//                    System.out.print(v.pixelPosition[0]+","+v.pixelPosition[1]+" -> ");
+//
+//                    for(SolverVertex c:v.children){
+//                        System.out.print("["+c.pixelPosition[0]+","+c.pixelPosition[1]+"]  ");
+//                    }
+//                    System.out.println();
+//                }
+//            }
+//        }
+
 
         File outputFile = new File("oTest.png");
         ImageIO.write(image, "png", outputFile);
