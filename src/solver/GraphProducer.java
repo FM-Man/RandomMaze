@@ -78,21 +78,6 @@ public class GraphProducer {
             }
         }
 
-//        for (int i=0; i<height; i++){
-//            for (int j=0; j<width; j++){
-//                if(g.vertices[i][j] != null){
-//                    SolverVertex v = g.vertices[i][j];
-////                    image.setRGB(v.pixelPosition[0]+10,v.pixelPosition[1]+10,Color.RED.getRGB());
-//                    System.out.print(v.pixelPosition[0]+","+v.pixelPosition[1]+" -> ");
-//
-//                    for(SolverVertex c:v.children){
-//                        System.out.print("["+c.pixelPosition[0]+","+c.pixelPosition[1]+"]  ");
-//                    }
-//                    System.out.println();
-//                }
-//            }
-//        }
-
 
         File outputFile = new File("oTest.png");
         ImageIO.write(image, "png", outputFile);
