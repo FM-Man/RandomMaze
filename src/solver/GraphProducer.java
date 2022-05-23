@@ -40,6 +40,7 @@ public class GraphProducer {
                     pxType[i][j] = 2;
 
                     if(i==0){
+                        thisVertex.totalRoadVisited = 0;
                         g.starters.add(thisVertex);
                     }
                     else {

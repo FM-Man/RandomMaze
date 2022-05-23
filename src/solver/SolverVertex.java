@@ -14,6 +14,7 @@ public class SolverVertex implements Comparable<SolverVertex>{
     public SolverVertex(int x, int y){
         pixelPosition[0] =x;
         pixelPosition[1] =y;
+        totalRoadVisited = Integer.MAX_VALUE;
     }
 
     public void connect(SolverVertex toVertex, int d){
@@ -24,9 +25,18 @@ public class SolverVertex implements Comparable<SolverVertex>{
         }
     }
 
+    public void reinit(){
+        source=null;
+        totalRoadVisited = Integer.MAX_VALUE;
+        isVisited = false;
+    }
 
     @Override
     public int compareTo(SolverVertex o) {
         return totalRoadVisited-o.totalRoadVisited;
+    }
+
+    public String toString(){
+        return "[ "+pixelPosition[0] + "," + pixelPosition[1]+" ]";
     }
 }
