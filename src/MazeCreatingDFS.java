@@ -11,7 +11,7 @@ public class MazeCreatingDFS extends Thread{
         to.visited = true;
         Arm nA= new Arm(to,source);
         Maze.arms.add(nA);
-        System.out.println(root.x+"->"+nA);
+        //System.out.println(root.x+"->"+nA);
 
         try {
             Thread.sleep(1);

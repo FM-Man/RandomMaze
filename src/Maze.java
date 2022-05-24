@@ -1,3 +1,5 @@
+import solver.SolverDriver;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -8,8 +10,8 @@ import java.util.Arrays;
 
 public class Maze {
     private boolean thread1done = false, thread2done=false;
-    int height= 5;
-    int width = 5;
+    int height;
+    int width;
 
 
     static ArrayList<Arm> arms = new ArrayList<>();
@@ -36,7 +38,9 @@ public class Maze {
     }
 
 
-    public void createMaze(){
+    public void createMaze(int height, int width){
+        this.height = height;
+        this.width=width;
         GridBuilder maze = new GridBuilder(height,width);
         MazeCreatingDFS mazeCreatingDfs1 = new MazeCreatingDFS(maze.get(0,0));
         MazeCreatingDFS mazeCreatingDfs2 = new MazeCreatingDFS(maze.get(height-1, width-1));
@@ -121,20 +125,7 @@ public class Maze {
 
         System.out.println("everything done");
 
-//
-//
-//        StringBuilder s= new StringBuilder();
-//        for (int[] a: fivePxWidePath){
-//            for (int b: a) {
-//                if(b!=0)
-//                    s.append(b).append(" ");
-//                else s.append("  ");
-//            }
-//            s.append("\n");
-//        }
-//        System.out.println(s);
-//        BufferedOutputStream bfw = new BufferedOutputStream(new FileOutputStream("hah.txt"));
-//        bfw.write(s.toString().getBytes());
-//        bfw.close();
+        SolverDriver.main();
+
     }
 }

@@ -78,8 +78,6 @@ public class GraphProducer {
             }
         }
 
-        //is it done yet? no its not
-
 
         File outputFile = new File("oTest.png");
         ImageIO.write(image, "png", outputFile);
